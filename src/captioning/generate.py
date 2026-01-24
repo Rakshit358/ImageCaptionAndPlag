@@ -24,10 +24,9 @@ def caption_image(processor, model, image_path, device, max_length=30):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--image', type=str, required=True, help='Path to input image')
-    parser.add_argument('--device', type=str, default='cpu', help='cpu or cuda')
     args = parser.parse_args()
 
-    device = torch.device(args.device if torch.cuda.is_available() and args.device == 'cuda' else 'cpu')
+    device = "cuda" if torch.cuda.is_available() else "cpu"
     print('Using device:', device)
 
     processor, model = load_model(device)
