@@ -12,12 +12,14 @@ def load_model(device):
     return processor, model
 
 
-def caption_image(processor, model, image_path, device, max_length=30):
-    image = Image.open(image_path).convert('RGB')
+def caption_image(processor, model, image, device, max_length=30):
+    image = image.convert("RGB")
     inputs = processor(image, return_tensors="pt").to(device)
+
     with torch.no_grad():
         out = model.generate(**inputs, max_length=max_length)
-        caption = processor.decode(out[0], skip_special_tokens=True)
+
+    caption = processor.decode(out[0], skip_special_tokens=True)
     return caption
 
 

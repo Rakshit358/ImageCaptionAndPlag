@@ -90,18 +90,19 @@ def main():
                     source_id=article["id"],
                     title=article["title"]
                 )
+                time.sleep(0.1)
 
             except Exception as e:
                 print(f"Error processing chunk {chunk_idx}: {e}")
-
+            
     if all_embeddings:
         embeddings_array = np.array(all_embeddings)
         save_embeddings(embeddings_array)
 
         print(f"\n{'=' * 80}")
-        print(f"✓ Stored {len(all_chunks)} news chunks")
-        print(f"✓ Database saved successfully")
-        print(f"✓ Embeddings saved as embeddings.npy")
+        print(f" Stored {len(all_chunks)} news chunks")
+        print(f" Database saved successfully")
+        print(f" Embeddings saved as embeddings.npy")
         print(f"{'=' * 80}")
     else:
         print("No chunks generated!")

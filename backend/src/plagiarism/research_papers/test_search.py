@@ -1,7 +1,12 @@
 from search import search_paper
+import os
+import sys
 
 # Example query - you can change this to any research-related text
-query = "Deep learning neural networks for image classification and pattern recognition."
+DEFAULT_QUERY = "Deep learning neural networks for image classification and pattern recognition."
+query = os.environ.get("SEARCH_QUERY", "").strip()
+if not query:
+        query = DEFAULT_QUERY
 
 print("=" * 80)
 print("Research Paper Plagiarism Detector - Test Search")

@@ -1,6 +1,11 @@
 from search import search_blog
+import os
+import sys
 
-query = "Programming ecosystem of C exists but as isolated domains with inconsistent syntax."
+DEFAULT_QUERY = "Programming ecosystem of C exists but as isolated domains with inconsistent syntax."
+query = os.environ.get("SEARCH_QUERY", "").strip()
+if not query:
+        query = DEFAULT_QUERY
 
 results = search_blog(query, top_k=1)
 

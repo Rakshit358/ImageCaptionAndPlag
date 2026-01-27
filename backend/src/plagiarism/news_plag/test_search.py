@@ -1,6 +1,12 @@
 from search import search_news
+import os
+import sys
+
 # Example query – you can change this to any news-related text
-query = "Heavy snowfall in northern India affecting travel and tourism."
+DEFAULT_QUERY = "Heavy snowfall in northern India affecting travel and tourism."
+query = os.environ.get("SEARCH_QUERY", "").strip()
+if not query:
+        query = DEFAULT_QUERY
 
 print("=" * 80)
 print("News Article Plagiarism Detector - Test Search")
